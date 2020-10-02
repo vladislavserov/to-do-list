@@ -1,0 +1,19 @@
+.my-class-name {
+  background-color: palegoldenrod;
+  max-width: 600px;
+}
+
+.element-list {
+  padding-right: 80px;
+  padding-left: 5px;
+}
+
+.important-item {
+  background-color: red;
+}
+
+.delete-button {
+  background-color: red;
+  border-radius: 20%;
+  
+}
