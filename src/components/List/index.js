@@ -1,38 +1,33 @@
-import React, { useState } from 'react';
-import { uniqueId } from 'lodash';
+import React from 'react';
+import { connect } from 'react-redux'
 import Item from '../Item';
+import { add_todo_item, delete_todo_item, toggle_checked, toggle_important } from '../../store/actions';
 
 
-const List = () => {
-    const [ list, setList] = useState([]);
-    
+const List = (props) => {
+    const { list, dispatch } = props;
+
     const handleCheckedChange = (key) => {
-        const newList = [...list];
-        const index = newList.findIndex((element) => element.key === key);
-        if (index === -1) {
-            return;
-        }
-        newList[index].checked = !newList[index].checked;
-        setList(newList);
+        dispatch(toggle_checked(key));
     }
 
     const handleImportantButtonChange = (key) => {
-        const newList = [...list];
-        const index = newList.findIndex((element) => element.key === key);
-        if (index === -1) {
-            return;
-        }
-        newList[index].important = !newList[index].important;
-        setList(newList);
+        dispatch(toggle_important(key));
     }
 
     const handleDeleteItem = (key) => {
-        const newList = [...list];
-        const result = newList.filter(item => item.key !== key);
-        setList(result);
+        dispatch(delete_todo_item(key));
     }
 
     const inputRef = React.createRef();
+
+    const handleAddTask = () => {
+        const inputElement = inputRef.current;
+        const text = inputElement.value;
+        inputElement.value = "";
+
+        dispatch(add_todo_item(text))    
+    }
 
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
@@ -40,16 +35,6 @@ const List = () => {
         }
     }
 
-    const handleAddTask = () => {
-        const inputElement = inputRef.current;
-        const text = inputElement.value;
-        inputElement.value = "";
-
-        const newItem = {text, checked: false, key: uniqueId("item-"), important: false}
-        const newList = [...list, newItem];
-        setList(newList);
-    }
-    
     return (
         <>
             { 
@@ -64,7 +49,9 @@ const List = () => {
             <input ref={inputRef} onKeyDown={handleKeyDown} />
             <button onClick={handleAddTask}>Add</button>
         </>
-    )
+    );
 }
 
-export default List;
+const mapStateToProps = (state) => ({ list: state });
+
+export default connect(mapStateToProps)(List);

@@ -7,8 +7,10 @@ import { createStore } from 'redux'
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { listReducer } from './store/reducers';
 
-const store = createStore([/*reducers*/])
+
+const store = createStore(listReducer)
 
 ReactDOM.render(
   <React.StrictMode>
