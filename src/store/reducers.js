@@ -7,7 +7,7 @@ export const listReducer = function(state = [], action) {
             return [...state, {text: action.text, key: uniqueId("item-"), important: false, checked: false}]
         case DELETE_TODO_ITEM:
             return [...state].filter(item => item.key !== action.key);
-        case TOGGLE_IMPORTANT:
+        case TOGGLE_IMPORTANT: {
             const newList = [...state];
             const index = newList.findIndex((item) => item.key === action.key);
             if (index === -1) {
@@ -15,14 +15,16 @@ export const listReducer = function(state = [], action) {
             } 
             newList[index].important = !newList[index].important;
             return newList;
-        case TOGGLE_CHECKED:
-            const newTodos = [...state];
-            const ind = newTodos.findIndex((item) => item.key === action.key);
-            if (ind === -1) {
+        }
+        case TOGGLE_CHECKED: {
+            const newList = [...state];
+            const index = newList.findIndex((item) => item.key === action.key);
+            if (index === -1) {
                 return state;
             } 
-            newTodos[ind].checked = !newTodos[ind].checked;
-            return newTodos;
+            newList[index].checked = !newList[index].checked;
+            return newList;
+        }
         default: 
             return state;
     }
