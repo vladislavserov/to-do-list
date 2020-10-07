@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 import Item from '../Item';
 import { add_todo_item, delete_todo_item, toggle_checked, toggle_important } from '../../store/actions';
@@ -36,7 +37,8 @@ const List = (props) => {
     }
 
     return (
-        <>
+        <div>
+            <h1>All Tasks!!</h1>
             { 
                 list.map((value) => 
                     <Item   key={value.key}
@@ -48,10 +50,13 @@ const List = (props) => {
             }
             <input ref={inputRef} onKeyDown={handleKeyDown} />
             <button onClick={handleAddTask}>Add</button>
-        </>
+        </div>
     );
 }
 
-const mapStateToProps = (state) => ({ list: state });
+List.propTypes = {
+    list: PropTypes.array.isRequired,
+    dispatch: PropTypes.func.isRequired,
+}
 
-export default connect(mapStateToProps)(List);
+export default connect()(List);
