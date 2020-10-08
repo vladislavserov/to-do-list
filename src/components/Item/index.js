@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Item = ({ data: { text, checked , key, important}, handleCheckedChange, handleImportantButtonChange, handleDeleteItem }) => {    
     const handleCheckboxClick = () => {
@@ -24,7 +25,7 @@ const Item = ({ data: { text, checked , key, important}, handleCheckedChange, ha
     
     return (
         <div className={itemClasses}>
-            <input type='checkbox' checked={checked} onClick={handleCheckboxClick} />
+            <input type='checkbox' checked={checked} onChange={handleCheckboxClick} />
             <span className="element-list">
                 { renderText(text, checked) }
             </span>
@@ -32,6 +33,18 @@ const Item = ({ data: { text, checked , key, important}, handleCheckedChange, ha
             <button className="delete-button" onClick={handleDeleteButtonClick}>Delete</button>
         </div> 
     )
+}
+
+Item.propTypes = {
+    data: PropTypes.shape({
+        text: PropTypes.string.isRequired, 
+        checked: PropTypes.bool.isRequired,
+        key: PropTypes.string.isRequired, 
+        important: PropTypes.bool.isRequired,
+    }),
+    handleCheckedChange: PropTypes.func.isRequired,
+    handleImportantButtonChange: PropTypes.func.isRequired,
+    handleDeleteItem: PropTypes.func.isRequired,
 }
 
 export default Item;

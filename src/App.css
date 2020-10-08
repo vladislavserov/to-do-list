@@ -15,5 +15,8 @@
 .delete-button {
   background-color: red;
   border-radius: 20%;
-  
+}
+
+.active-filter-button {
+  background-color: #a0a0a0;
 }

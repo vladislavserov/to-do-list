@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import ImportantTasksFilter from './components/ImportantTasksFilter';
+import TasksFilter from './components/TasksFilter';
 
 function App() {
   return (
     <>
-      <ImportantTasksFilter />
+      <TasksFilter />
     </>
   );
 }

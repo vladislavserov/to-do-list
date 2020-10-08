@@ -38,7 +38,6 @@ const List = (props) => {
 
     return (
         <div>
-            <h1>All Tasks!!</h1>
             { 
                 list.map((value) => 
                     <Item   key={value.key}
