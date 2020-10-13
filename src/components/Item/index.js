@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import dateFormat from 'dateformat';
 
-const Item = ({ data: { text, checked , key, important}, handleCheckedChange, handleImportantButtonChange, handleDeleteItem }) => {    
+const Item = ({ data: { text, checked , key, important, createdAt }, handleCheckedChange, handleImportantButtonChange, handleDeleteItem }) => {
     const handleCheckboxClick = () => {
         handleCheckedChange(key);
     }
@@ -32,6 +33,9 @@ const Item = ({ data: { text, checked , key, important}, handleCheckedChange, ha
                 </span>
             </div>
             <div>
+                <span className="created-at">
+                    {dateFormat(createdAt, "h:MM")}
+                </span>
                 <button disabled={important} onClick={handleImportantButtonClick} >Important</button>
                 <button className="delete-button" onClick={handleDeleteButtonClick}>Delete</button>
             </div>
