@@ -21,16 +21,20 @@ const Item = ({ data: { text, checked , key, important}, handleCheckedChange, ha
         handleDeleteItem(key);
     }
 
-    const itemClasses = (important) ? "my-class-name important-item" : "my-class-name" ;
+    const itemClasses = (important) ? "item important-item" : "item" ;
     
     return (
         <div className={itemClasses}>
-            <input type='checkbox' checked={checked} onChange={handleCheckboxClick} />
-            <span className="element-list">
-                { renderText(text, checked) }
-            </span>
-            <button disabled={important} onClick={handleImportantButtonClick} >Important</button>
-            <button className="delete-button" onClick={handleDeleteButtonClick}>Delete</button>
+            <div>
+                <input type='checkbox' checked={checked} onChange={handleCheckboxClick} />
+                <span className="element-list">
+                    { renderText(text, checked) }
+                </span>
+            </div>
+            <div>
+                <button disabled={important} onClick={handleImportantButtonClick} >Important</button>
+                <button className="delete-button" onClick={handleDeleteButtonClick}>Delete</button>
+            </div>
         </div> 
     )
 }

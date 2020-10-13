@@ -58,16 +58,16 @@ const TasksFilter = (props) => {
     const ButtonImportantClasses = FILTER_STATUS.IMPORTANT === currentFilterStatus ? "active-filter-button" : ""; 
 
     return (
-        <>
-            <h1>Tasks</h1>
+        <div className="wraper-all">
+            <h1>todos</h1>
             <div>
                 <button className = {ButtonAllClasses}       onClick={showAllList}>All</button>
                 <button className = {ButtonActiveClasses}    onClick={showActiveList}>Active</button>
                 <button className = {ButtonComplitedClasses} onClick={showComplitedList}>Complited</button>
                 <button className = {ButtonImportantClasses} onClick={showImportantList}>Important</button>
             </div>
-            <List list={filteredList}/> 
-        </>
+            <List list={filteredList} className="list"/> 
+        </div>
     );
 }
 

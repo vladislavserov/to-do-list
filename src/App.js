@@ -5,7 +5,7 @@ import TasksFilter from './components/TasksFilter';
 function App() {
   return (
     <>
-      <TasksFilter />
+      <TasksFilter className="wraper-all"/>
     </>
   );
 }

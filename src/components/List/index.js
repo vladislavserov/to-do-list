@@ -47,8 +47,10 @@ const List = (props) => {
                             handleDeleteItem={handleDeleteItem}/>
                 )
             }
-            <input ref={inputRef} onKeyDown={handleKeyDown} />
-            <button onClick={handleAddTask}>Add</button>
+            <div className="search">
+                <input ref={inputRef} onKeyDown={handleKeyDown} />
+                <button onClick={handleAddTask}>Add</button>
+            </div>
         </div>
     );
 }

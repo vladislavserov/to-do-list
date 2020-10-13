@@ -1,6 +1,8 @@
-.my-class-name {
+.item {
   background-color: palegoldenrod;
   max-width: 600px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .element-list {
@@ -9,14 +11,48 @@
 }
 
 .important-item {
-  background-color: red;
+  background-color: rgba(255, 0, 0, 0.664);
 }
 
 .delete-button {
-  background-color: red;
+  background-color: rgb(255, 0, 0);
   border-radius: 20%;
 }
 
 .active-filter-button {
-  background-color: #a0a0a0;
+  background-color: #f0e65d49;
+}
+
+.wraper-all {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 50%;
+  align-items: center;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-self: center;
+}
+
+.search {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-self: center;
+  width: 500px;
+}
+
+.root {
+  display: flex;
+  justify-content: center;
+  background-color: rgba(156, 156, 156, 0.288);
+}
+
+.middle {
+  display: flex;
+  justify-content: center;
 }
